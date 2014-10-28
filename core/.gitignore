@@ -2,6 +2,6 @@
 .aptget/partial
 .aptget/*.deb
 .aptget/lock
-sorparent.iml
+*.iml
 .idea/
 .vagrant/
