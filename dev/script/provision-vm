@@ -1,0 +1,52 @@
+#!/bin/bash
+set -e
+
+echo "Running devkit puppet module"
+rm -rf /tmp/devkit
+git clone https://github.com/LandRegistry/infrastructure-puppet-devkit /tmp/devkit
+puppet apply /tmp/devkit/tests/optional.pp --modulepath=/tmp
+
+# elasticsearch
+wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add -
+echo "deb http://packages.elasticsearch.org/elasticsearch/1.3/debian stable main" > /etc/apt/sources.list.d/elasticsearch.list
+
+echo "Updating repositories"
+apt-get update -qq
+
+
+echo "Configuring user environment"
+su vagrant -c cat <<EOF > /home/vagrant/.ssh/config
+Host github.com
+	StrictHostKeyChecking no 
+
+EOF
+chown -R vagrant:vagrant /home/vagrant
+#su vagrant -c /vagrant/script/bin/lr-bootstrap
+
+cat <<EOF > ${bash_profile}
+export WORKON_HOME=${WORKON_HOME}
+export PATH=/vagrant/script/bin:${PATH}
+
+source /usr/local/bin/virtualenvwrapper.sh
+alias ls="ls -F"
+cd /vagrant
+EOF
+
+
+echo "Configuring /etc/hosts"
+ETCHOSTS=`cat /tmp/etchosts`
+
+cat <<EOF > /etc/hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+0.0.0.0  sor-dev 
+172.16.42.42 ${ETCHOSTS}
+
+EOF
+
+rm -f /tmp/etchosts
+

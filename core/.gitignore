@@ -4,3 +4,4 @@
 .aptget/lock
 sorparent.iml
 .idea/
+.vagrant/
