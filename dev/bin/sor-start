@@ -5,4 +5,4 @@ source /vagrant/dev/script/sor-functions
 cd /vagrant
 mvn package
 
-start_app uuid
+start_app uuid "1.0-SNAPSHOT"
