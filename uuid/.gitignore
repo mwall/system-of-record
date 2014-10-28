@@ -6,3 +6,4 @@
 .idea/
 .vagrant/
 target/
+dependency-reduced-pom.xml

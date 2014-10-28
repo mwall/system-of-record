@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+cd /vagrant
+mvn clean
+rm -rf ~/.m2

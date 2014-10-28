@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+sor_package_path="uk/gov/gds/sor"
+local_maven_repo="/home/vagrant/.m2/repository/${sor_package_path}"
+app_version="1.0-SNAPSHOT"
+
+function start_app {
+	local app_name=$1
+	local app_jar="${local_maven_repo}/${app_name}/${app_version}/${app_name}-${app_version}.jar"
+
+	echo "Starting app ${app_name} from ${app_jar}"
+	java -jar ${app_jar}
+}

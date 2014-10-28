@@ -19,8 +19,7 @@ chown -R vagrant:vagrant /home/vagrant
 #su vagrant -c /vagrant/script/bin/lr-bootstrap
 
 cat <<EOF > ${bash_profile}
-export WORKON_HOME=${WORKON_HOME}
-export PATH=/vagrant/script/bin:${PATH}
+export PATH=/vagrant/dev/bin:${PATH}
 
 alias ls="ls -F"
 cd /vagrant

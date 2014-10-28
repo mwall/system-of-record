@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+source /vagrant/dev/script/sor-functions
+
+cd /vagrant
+mvn package
+
+start_app uuid
