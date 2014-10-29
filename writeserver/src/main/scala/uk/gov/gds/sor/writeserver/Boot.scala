@@ -1,4 +1,4 @@
-package uk.gov.gds.sor.readserver
+package uk.gov.gds.sor.writeserver
 
 import akka.actor.{ActorSystem, Props}
 import akka.io.IO

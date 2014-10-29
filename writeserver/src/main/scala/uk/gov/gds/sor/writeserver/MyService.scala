@@ -1,4 +1,4 @@
-package uk.gov.gds.sor.readserver
+package uk.gov.gds.sor.writeserver
 
 import akka.actor.Actor
 import spray.http.MediaTypes._

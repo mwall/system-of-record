@@ -1,4 +1,4 @@
-package uk.gov.gds.sor.readserver
+package uk.gov.gds.sor.writeserver
 
 import org.specs2.mutable.Specification
 import spray.http.StatusCodes._

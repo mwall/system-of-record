@@ -4,9 +4,10 @@ import sbt._
 object SystemOfRecordBuild extends Build {
 
   lazy val root = Project("system-of-record-universe", file("."))
-    .aggregate(readserver)
+    .aggregate(readserver, writeserver)
 
   lazy val readserver = SprayProject("readserver")
+  lazy val writeserver = SprayProject("writeserver")
 
 }
 
