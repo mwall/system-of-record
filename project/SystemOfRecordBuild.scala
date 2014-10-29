@@ -1,18 +1,32 @@
+import sbt.Keys._
 import sbt._
 
 object SystemOfRecordBuild extends Build {
-	Classpaths.typesafeResolver
 
-	lazy val root = Project("system-of-record-universe", file(".")).aggregate(core)
+  lazy val root = Project("system-of-record-universe", file("."))
+    .aggregate(readserver)
 
-	lazy val core = GdsProject("core")
+  lazy val readserver = SprayProject("core")
 
 }
 
 object GdsProject {
-	def apply(name: String) = Project(name, file(name))
+  def apply(name: String) = Project(name, file(name))
 }
 
 object SprayProject {
-	def apply(name: String) = GdsProject(name)
+  val akkaVersion = "2.3.6"
+  val sprayVersion = "1.3.2"
+
+  def apply(name: String) = GdsProject(name)
+    .settings(
+      libraryDependencies ++= Seq(
+        "io.spray" %% "spray-can" % sprayVersion,
+        "io.spray" %% "spray-routing" % sprayVersion,
+        "io.spray" %% "spray-testkit" % sprayVersion % "test",
+        "com.typesafe.akka" %% "akka-actor" % akkaVersion,
+        "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test",
+        "org.specs2" %% "specs2-core" % "2.3.11" % "test"
+      )
+    )
 }

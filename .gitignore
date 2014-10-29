@@ -6,3 +6,4 @@ sorparent.iml
 .idea/
 .vagrant/
 target/
+.idea_modules/
