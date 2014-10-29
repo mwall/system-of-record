@@ -6,7 +6,7 @@ object SystemOfRecordBuild extends Build {
   lazy val root = Project("system-of-record-universe", file("."))
     .aggregate(readserver)
 
-  lazy val readserver = SprayProject("core")
+  lazy val readserver = SprayProject("readserver")
 
 }
 
