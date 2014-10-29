@@ -1,9 +1,0 @@
-.DS_Store
-.aptget/partial
-.aptget/*.deb
-.aptget/lock
-*.iml
-.idea/
-.vagrant/
-target/
-dependency-reduced-pom.xml
