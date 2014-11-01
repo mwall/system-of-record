@@ -15,6 +15,7 @@ object SystemOfRecordBuild extends Build {
 object GdsProject {
   def apply(name: String) = Project(name, file(name))
     .settings(scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8"))
+    .settings(scalaVersion := "2.11.2")
 }
 
 object SprayServer {
